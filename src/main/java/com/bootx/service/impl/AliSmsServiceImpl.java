@@ -160,28 +160,4 @@ public class AliSmsServiceImpl implements AliSmsService {
 
     return response(aliyunSmsConfig,params,"SendSms");
   }
-
-
-  public static void main(String[] args) {
-    // 您的验证码${code}，该验证码5分钟内有效，请勿泄漏于他人！
-    String signName="金尚成";
-    String templateCode = "SMS_174814740";
-    Map<String,String> templateParam = new HashMap<>();
-    templateParam.put("code","123456");
-    //String smsUpExtendCode="smsUpExtendCode";
-    String outId="outId";
-
-    AliyunSmsConfig aliyunSmsConfig = new AliyunSmsConfig();
-    aliyunSmsConfig.setAccessKeyId("Gi1uk3OIE2JQXSSb");
-    aliyunSmsConfig.setSecret("RRfYbEBMMJjzZkuXMCBkfhOAoLJ2q2");
-    aliyunSmsConfig.setRegionId("cn-hangzhou");
-    CommonResponse commonResponse = new AliSmsServiceImpl().sendSms(aliyunSmsConfig,new String[]{
-      "19971579891"
-    },signName,templateCode,templateParam,null,outId);
-
-    Map<String,String> result = JsonUtils.toObject(commonResponse.getData(), new TypeReference<Map<String,String>>() {
-    });
-
-    System.out.println(result);
-  }
 }
